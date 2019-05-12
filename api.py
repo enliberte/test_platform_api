@@ -7,7 +7,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'tests'
-app.config['MONGO_URI'] = os.environ.get('MONGO_URL') or 'mongodb://localhost:27017/tests'
+app.config['MONGO_URI'] = os.environ.get('MONGO_URL', 'mongodb://localhost:27017/tests')
 mongo = PyMongo(app)
 CORS(app)
 
@@ -94,4 +94,7 @@ def delete_test(id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(
+        host='https://api-test-platform.herokuapp.com',
+        port=os.environ.get('PORT', 5000)
+    )
