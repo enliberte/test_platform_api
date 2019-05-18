@@ -94,7 +94,4 @@ def delete_test(id):
 
 
 if __name__ == '__main__':
-    app.run(
-        host='https://api-test-platform.herokuapp.com',
-        port=os.environ.get('PORT', 5000)
-    )
+    app.run(port=os.environ.get('PORT', 5000))
